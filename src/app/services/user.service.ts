@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { User } from '../models/user';
+import { HttpErrorHandler } from '../models/errors/HttpErrorHandler';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,12 @@ export class UserService {
     headers = headers.set("Authorization", "Bearer " + this.token);
 
     return this.http.get(this.apiURI, { headers: headers })
-      .pipe(map(data => {
-        return data as User[];
-      }))
+      .pipe(
+        map(
+          data => {
+            return data as User[];
+          }),
+        catchError(HttpErrorHandler.handleError)
+      )
   }
 }
