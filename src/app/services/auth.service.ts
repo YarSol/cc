@@ -35,6 +35,10 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem("access_token");
+    localStorage.removeItem("firstName");
+    localStorage.removeItem("lastName");
+    localStorage.removeItem("email");
+    localStorage.removeItem("currentUserId");
   }
 
   isLoggedIn() {
@@ -44,6 +48,11 @@ export class AuthService {
   private setToken(data) {
     if (data && data["access_token"]) {
       localStorage.setItem("access_token", data["access_token"]);
+      localStorage.setItem("firstName", data["firstName"]);
+      localStorage.setItem("lastName", data["lastName"]);
+      localStorage.setItem("email", data["email"]);
+      localStorage.setItem("currentUserId", data["currentUserId"]);
+
       return true;
     }
 

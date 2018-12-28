@@ -1,6 +1,8 @@
 import { Competition } from './../../models/competition';
 import { CompetitionService } from './../../services/competition.service';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { SpecificErrorHandler } from 'src/app/models/errors/SpecificErrorHandler';
 
 @Component({
   selector: 'app-competitions',
@@ -10,11 +12,18 @@ import { Component, OnInit } from '@angular/core';
 export class CompetitionsComponent implements OnInit {
   competitions: Competition[];
 
-  constructor(private competitionService: CompetitionService) {
+  constructor(private competitionService: CompetitionService, private toastrService: ToastrService) {
   }
 
   ngOnInit() {
-    this.competitions = this.competitionService.getCompetitions();
+    this.competitionService.get()
+      .subscribe(
+        result => {
+          if (result) {
+            this.competitions = result;
+          }
+        }),
+      (error => (new SpecificErrorHandler(this.toastrService)).handleError(error));
   }
 
 }

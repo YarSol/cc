@@ -3,4 +3,5 @@ export class User {
     firstName: string;
     lastName: string;
     email: string;
+    competitionsAmount: number; // takes part in
 }

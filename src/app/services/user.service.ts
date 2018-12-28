@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { map, catchError } from 'rxjs/operators';
@@ -10,14 +10,12 @@ import { HttpErrorHandler } from '../models/errors/HttpErrorHandler';
 })
 export class UserService {
   private apiURI = 'http://localhost:19216/api/users/';
-  private token = localStorage.getItem("access_token");
 
   constructor(private http: HttpClient) { }
 
   get() {
     let headers = new HttpHeaders();
-    //headers.set("Content-Type", "application/json")
-    headers = headers.set("Authorization", "Bearer " + this.token);
+    headers = headers.set("Authorization", "Bearer " + localStorage.getItem("access_token"));
 
     return this.http.get(this.apiURI, { headers: headers })
       .pipe(

@@ -2,11 +2,13 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Participants amount</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let c of competitions" class="table-dark">
       <td><a [routerLink]="['/competitions', c.id]">{{c.name}}</a></td>
+      <td>{{c.participantsAmount}}</td>
     </tr>
   </tbody>
 </table>

@@ -12,10 +12,10 @@ import { ToastrService } from 'ngx-toastr';
 export class UsersComponent implements OnInit {
   users: User[];
 
-  constructor(private competitionService: UserService, private toastrService: ToastrService) { }
+  constructor(private userService: UserService, private toastrService: ToastrService) { }
 
   ngOnInit() {
-    this.competitionService.get()
+    this.userService.get()
       .subscribe(
         result => {
           if (result) {

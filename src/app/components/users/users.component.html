@@ -1,12 +1,16 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Name</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Compatitions amount</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let u of users" class="table-dark">
       <td><a [routerLink]="['/users', u.id]">{{u.firstName}}</a></td>
+      <td><a [routerLink]="['/users', u.id]">{{u.lastName}}</a></td>
+      <td>{{u.competitionsAmount}}</td>
     </tr>
   </tbody>
 </table>
