@@ -19,6 +19,9 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MyCompetitionsComponent } from './components/my-competitions/my-competitions.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
     CompetitionComponent,
     SignUpComponent,
     LoginComponent,
-    UsersComponent
+    UsersComponent,
+    MyCompetitionsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     CommonModule,
     BrowserAnimationsModule,
+    NgbModule.forRoot(),
     ToastrModule.forRoot()
   ],
   providers: [

@@ -45,6 +45,13 @@ export class AuthService {
     return !this.helper.isTokenExpired(localStorage.getItem("access_token"));
   }
 
+  get userName(): string {
+    if (this.isLoggedIn())
+      return localStorage.getItem("firstName") + " " + localStorage.getItem("lastName");
+
+    return "";
+  }
+
   private setToken(data) {
     if (data && data["access_token"]) {
       localStorage.setItem("access_token", data["access_token"]);

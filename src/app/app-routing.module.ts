@@ -1,3 +1,4 @@
+import { MyCompetitionsComponent } from './components/my-competitions/my-competitions.component';
 import { LoginComponent } from './components/login/login.component';
 import { CompetitionComponent } from './components/competition/competition.component';
 import { HomeComponent } from './components/home/home.component';
@@ -11,6 +12,7 @@ import { AuthGuard } from './services/auth-guard.service';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
+  { path: 'my/competitions', component: MyCompetitionsComponent, canActivate: [AuthGuard] },
   { path: 'competitions/:id', component: CompetitionComponent, canActivate: [AuthGuard] },
   { path: 'competitions', component: CompetitionsComponent, canActivate: [AuthGuard] },
 
